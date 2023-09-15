@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/fontawesome-all.min.css}">
 </head>
-<body>
+<body >
 <div class='container'>
 
     <div>
@@ -37,38 +37,25 @@
     <div id="content">
         <main>
             <div class="container px-4 py-5">
-                <h1 class="pb-2 border-bottom">Lista Empleados</h1>
-                <form method="post" th:action="@{/empleado/buscarPorNombre}">
-                    <div class="input-group mb-3">
-                        <input name="searchField" class="form-control" type="text" placeholder="Buscar por nombre" th:value="${textoBuscado}" >
-                        <button class="btn btn-primary" type="submit">Buscar</button>
-                        <a class="btn btn-outline-secondary" th:href="@{/empleado/lista}">Limpiar</a>
-                    </div>
-                </form>
+                <h1 class="pb-2 border-bottom">Lista Viajes</h1>
+
+
                 <table class="table table-sm">
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Puesto</th>
-                        <th>Departamento</th>
-                        <th>Email</th>
-                        <th>Numero de Telefono</th>
-                        <th>Salario</th>
-                        <th></th>
-                        <th></th>
+                        <th>Punto de Recojo</th>
+                        <th>Cantidad de Perros</th>
+                        <th>Cantidad de Personas</th>
+                        <th>Lugar de Destino</th>
+                        <th>Cliente</th>
                     </tr>
-                    <tr th:each="emp, info : ${lista}">
+                    <tr th:each="viajes, info : ${lista}">
                         <td th:text="${info.index + 1}"></td>
-                        <td th:text="${emp.getFirst_name()}"></td>
-                        <td th:text="${emp.getLast_name()}"></td>
-                        <td th:text="${emp.getJob_id()}"></td>
-                        <td th:text="${emp.getDepartment_id()}"></td>
-                        <td th:text="${emp.getEmail()}"></td>
-                        <td th:text="${emp.getPhone_number()}"></td>
-                        <td th:text="${emp.getSalary()}"></td>
-                        <td><a class="btn btn-primary" th:href="@{'/empleados/editar?id=' + ${emp.getEmployee_id()}}">Editar</a>
-                        </td>
+                        <td th:text="${viajes.punto_recojo}"></td>
+                        <td th:text="${viajes.getCant_perros()}"></td>
+                        <td th:text="${viajes.getCant_personas()}"></td>
+                        <td th:text="${viajes.lugares.getNombre_lugar()}"></td>
+                        <td th:text="${viajes.persona.getNombre()}"></td>
                     </tr>
                 </table>
             </div>
